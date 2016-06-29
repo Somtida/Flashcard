@@ -9,6 +9,8 @@ app.controller('mainCtrl', function() {
 app.controller('practiceCtrl', function($scope, Flashcard) {
   console.log('parcticeCtrl!');
   $scope.flashcards = [];
+  $scope.showFlashcards = [];
+  $scope.category = [];
   // // $scope.showCategory = false;
   // // $scope.startButton = true;
   //
@@ -21,10 +23,19 @@ app.controller('practiceCtrl', function($scope, Flashcard) {
     .then(res=>{
       console.log("res.data: ",res.data);
       $scope.flashcards = res.data;
+
+      $scope.showFlashcard = $scope.flashcards;
+
     })
     .catch(err=>{
       console.log("err: ",err);
     })
+
+  $scope.random = () => {
+    return Math.floor(Math.random()*$scope.flashcards.length);
+  }
+
+
 
   $scope.getSelectedCategory = () =>{
     console.log("selectedCategory: ",$scope.selectedCategory);
@@ -43,6 +54,7 @@ app.controller('createCtrl', function($scope, Flashcard) {
   // }
   $scope.createNewCard = () =>{
     console.log($scope.newCard);
+    // $scope.newCard.category =
     Flashcard.post($scope.newCard)
     .then(res=>{
       console.log("posted");
@@ -69,6 +81,7 @@ app.controller('createCtrl', function($scope, Flashcard) {
 app.controller('showallCtrl', function($scope, Flashcard){
   $scope.showCardList = true;
   $scope.editArea = false;
+  $scope.index = "";
   Flashcard.get()
     .then(res=>{
       console.log("res.data: ",res.data);
@@ -79,11 +92,28 @@ app.controller('showallCtrl', function($scope, Flashcard){
     })
 
   $scope.editFlashcard = (index) => {
+    $scope.index = index;
+    console.log("$scope.index: ",$scope.index);
     console.log("index: ", $scope.flashcards[index]);
     $scope.editArea = true;
     let edit = angular.copy($scope.flashcards[index]);
     $scope.editCard = edit;
     $scope.editCardArea = true;
+
+  }
+
+  $scope.saveEditCard = () => {
+    console.log($scope.editCard);
+
+    Flashcard.put($scope.editCard._id, $scope.editCard)
+    .then(res=>{
+      console.log("res.data: ",res.data);
+      $scope.flashcards[$scope.index] = res.data;
+    })
+    .catch(err=>{
+      console.log("err: ",err);
+    })
+    $scope.editCardArea = false;
 
   }
 

@@ -13,11 +13,6 @@ app.config(function($stateProvider, $urlRouterProvider){
       templateUrl: '/html/showall.html',
       controller: 'showallCtrl'
     })
-    .state('editpage', {
-      url: '/editpage',
-      templateUrl: '/html/editpage.html',
-      controller: 'editpageCtrl'
-    })
     .state('practice', {
       url: '/practice',
       templateUrl: '/html/practice.html',

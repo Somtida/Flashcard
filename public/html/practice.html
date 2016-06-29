@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container my">
   <h1>SHOW CARD</h1>
 
   <!-- <button class="btn btn-warning" ng-click="startPractice()" ng-show="startButton">START</button> -->
@@ -24,8 +24,13 @@
     </div>
   </div> -->
 
-  <div class="text-center showCard" ng-show="showCard">
-    <!-- <div class="" ng-repeat=""></div> -->
+  <div class="text-center showCard">
+    <div class="" ng-repeat="flashcard in flashcards | orderBy: random">
+
+      <h3>{{flashcard.question}}</h3>
+      <button class="btn btn-info"><span><i class="fa fa-arrow-circle-right"></i></span> Next</button>
+
+    </div>
   </div>
 
 

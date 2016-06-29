@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container my">
   <!-- show all card -->
   <div class="showAll">
-    <div class="">
+    <div class="text-left">
       <label>category by: </label>
       <select ng-options="flashcard.category for flashcard in flashcards" ng-model="selectedCategory"></select>
     </div>
@@ -40,12 +40,12 @@
           <span class="fa fa-pencil-square"></span>  EDIT FLASHCARD
         </div>
         <div class="col-xs-2 text-right">
-          <button ng-click="closeEditCardArea()" class="btn btn-danger btn-sm text-right"><span class="fa fa-times-circle"></span></button>
+          <button ng-click="closeEditCardArea()" class="btn btn-default btn-sm text-right"><span class="fa fa-times-circle"></span></button>
         </div>
       </div>
     </div>
     <div>
-    <form class="form-horizontal" ng-submit="createNewCard()" >
+    <form class="form-horizontal" ng-submit="saveEditCard()" >
       <div class="form-group">
         <label class="col-sm-2 control-label">Category</label>
         <div class="col-sm-10">
@@ -76,7 +76,7 @@
           <input type="text" class="form-control" ng-model="editCard.choice3">
         </div>
 
-      <button class="btn btn-success createButt"><span class="fa fa-send"></span> Create</button>
+      <button class="btn btn-success createButt"><span class="fa fa-pencil"></span>  SAVE</button>
     </div>
     </form>
 

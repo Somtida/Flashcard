@@ -12,7 +12,7 @@ app.service('Flashcard', function($http){
   this.delete = id => {
     return $http.delete(`/api/flashcards/${id}`);
   }
-  this.put = (newCard, id) => {
-    return $http.put(`/api/flashcards/${id}`);
+  this.put = (id, newCard) => {
+    return $http.put(`/api/flashcards/${id}`, newCard);
   }
 })
