@@ -1,0 +1,33 @@
+<div class="container ">
+  <h1>SHOW CARD</h1>
+
+  <!-- <button class="btn btn-warning" ng-click="startPractice()" ng-show="startButton">START</button> -->
+  <label>category by: </label>
+  <select ng-change="getSelectedCategory()" ng-options="flashcard.category for flashcard in flashcards" ng-model="selectedCategory"></select>
+
+  <!-- <div class="row" ng-show="showCategory">
+    <div class="col-xs-6">
+      <label>category by: </label>
+      <select ng-change="getSelectedCategory()" ng-options="flashcard.category for flashcard in flashcards" ng-model="selectedCategory"></select>
+      <ul>
+        <li ng-repeat="flashcard.category for flashcard in flashcards">
+          <input type="checkbox" ng-model="flashcard.category.checked" ng-change="getSelectedCategory()">
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <pre><ng-pluralize count="flashcards.length"
+          when="{'0': 'You have no flashcard.',
+                  '1': 'You have 1 flashcards.',
+                  'other': 'You have {{flashcards.length}} flashcards.'}">
+      </ng-pluralize></pre>
+    </div>
+  </div> -->
+
+  <div class="text-center showCard" ng-show="showCard">
+    <!-- <div class="" ng-repeat=""></div> -->
+  </div>
+
+
+
+</div>

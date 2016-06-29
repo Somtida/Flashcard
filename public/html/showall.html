@@ -1,0 +1,33 @@
+<div class="container">
+  <!-- show all card -->
+  <div class="showAll">
+    <div class="">
+      <label>category by: </label>
+      <select ng-options="flashcard.category for flashcard in flashcards" ng-model="selectedCategory"></select>
+    </div>
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th class="col-xs-2 text-center">Category</th>
+          <th class="col-xs-3 text-center">Question</th>
+          <th class="col-xs-2 text-center">answer</th>
+          <th class="col-xs-3 text-center">hint</th>
+          <th class="col-xs-2 text-center">option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="flashcard in flashcards | filter:selectedCategory track by $index">
+          <td>{{flashcard.category}}</td>
+          <td>{{flashcard.question}}</td>
+          <td>{{flashcard.answer}}</td>
+          <td>{{flashcard.hint}}</td>
+          <td>
+            <button class="btn btn-warning btn-sm fa fa-pencil-square-o"></button>
+            <button class="btn btn-danger btn-sm fa fa-times-circle-o"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- end show all card -->
+</div>
