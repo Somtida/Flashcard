@@ -45,8 +45,8 @@ app.controller('createCtrl', function($scope, Flashcard) {
     console.log($scope.newCard);
     Flashcard.post($scope.newCard)
     .then(res=>{
-      console.log("res.data: ",res.data);
-      $scope.flashcards = res.data;
+      console.log("posted");
+
     })
     // .then(()=>{
     //   console.log("posted");
@@ -68,6 +68,7 @@ app.controller('createCtrl', function($scope, Flashcard) {
 
 app.controller('showallCtrl', function($scope, Flashcard){
   $scope.showCardList = true;
+  $scope.editArea = false;
   Flashcard.get()
     .then(res=>{
       console.log("res.data: ",res.data);
@@ -76,5 +77,32 @@ app.controller('showallCtrl', function($scope, Flashcard){
     .catch(err=>{
       console.log("err: ",err);
     })
+
+  $scope.editFlashcard = (index) => {
+    console.log("index: ", $scope.flashcards[index]);
+    $scope.editArea = true;
+    let edit = angular.copy($scope.flashcards[index]);
+    $scope.editCard = edit;
+    $scope.editCardArea = true;
+
+  }
+
+  $scope.deleteFlashcard = (index) => {
+    // console.log("index: ", $scope.flashcards[index]);
+    let id = $scope.flashcards[index]._id;
+    // console.log(id);
+    Flashcard.delete(id)
+      .then(()=>{
+        console.log("deleted");
+      })
+      .catch(err=>{
+        console.log("err: ",err);
+      })
+    $scope.flashcards.splice(index,1);
+  }
+
+  $scope.closeEditCardArea = () =>{
+    $scope.editCardArea = false;
+  }
 
 })

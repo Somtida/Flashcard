@@ -22,12 +22,65 @@
           <td>{{flashcard.answer}}</td>
           <td>{{flashcard.hint}}</td>
           <td>
-            <button class="btn btn-warning btn-sm fa fa-pencil-square-o"></button>
-            <button class="btn btn-danger btn-sm fa fa-times-circle-o"></button>
+            <button ng-click="editFlashcard($index)" class="btn btn-warning btn-sm fa fa-pencil-square-o"></button>
+            <button ng-click="deleteFlashcard($index)" class="btn btn-danger btn-sm fa fa-times-circle-o"></button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <!-- end show all card -->
+
+
+  <div ng-show="editArea">
+    <div class="createBox" ng-show="editCardArea">
+    <div class="alert alert-warning">
+      <div class="row">
+        <div class="col-xs-10 text-left">
+          <span class="fa fa-pencil-square"></span>  EDIT FLASHCARD
+        </div>
+        <div class="col-xs-2 text-right">
+          <button ng-click="closeEditCardArea()" class="btn btn-danger btn-sm text-right"><span class="fa fa-times-circle"></span></button>
+        </div>
+      </div>
+    </div>
+    <div>
+    <form class="form-horizontal" ng-submit="createNewCard()" >
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Category</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.category" required>
+        </div>
+        <label class="col-sm-2 control-label">Question</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.question" required>
+        </div>
+        <label class="col-sm-2 control-label">Answer</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.answer" required>
+        </div>
+        <label class="col-sm-2 control-label">hint</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.hint" required>
+        </div>
+        <label class="col-sm-2 control-label">Choice 1: </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.choice1">
+        </div>
+        <label class="col-sm-2 control-label">Choice 2: </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.choice2">
+        </div>
+        <label class="col-sm-2 control-label">Choice 3: </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="editCard.choice3">
+        </div>
+
+      <button class="btn btn-success createButt"><span class="fa fa-send"></span> Create</button>
+    </div>
+    </form>
+
+  </div>
+</div>
+  </div>
 </div>
